@@ -1,21 +1,29 @@
 {% extends 'rango/base.html' %}
 
 {% block body_block %}
-<form id="category_form" method="post" action="/rango/add_category/">
+<div class="hero-unit">
 	
-	{% csrf_token %}
-	{% for hidden in form.hidden_fields %}
-		{{ hidden }}
+	<h1>Please add a Category</h1>
 
-	{% endfor %}
+	<div class="container">
+		<form class="span6" id="category_form" method="post" action="/rango/add_category/">
+			
+			{% csrf_token %}
+			{% for hidden in form.hidden_fields %}
+				{{ hidden }}
 
-	{% for field in form.visible_fields %}
-		{{ field.errors }}
-		{{ field.help_text }}
-		{{ field }}
-	{% endfor %}
+			{% endfor %}
 
-	<input type="submit" name="submit" value="Create Category">
-</form>
+			{% for field in form.visible_fields %}
+				{{ field.errors }}
+				{{ field.help_text }}
+				{{ field }}
+			{% endfor %}
+
+			<button class="btn btn-primary" type="submit" name="submit">Create Category</button>
+		</form>
+		
+	</div>
+</div>
 
 {% endblock %}

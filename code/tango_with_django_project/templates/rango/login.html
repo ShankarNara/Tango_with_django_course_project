@@ -1,19 +1,24 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Rango</title>
-</head>
-<body>
-	<h1>Login</h1>
+{% extends 'rango/base.html' %}
 
-	<form id="login_form" method="post" action="/rango/login/">
-		{% csrf_token %}
-		Username : <input type="text" name="username" value="" size="50"/>
-		<br/>
-		Password : <input type="password" name="password" value="" size="50"/>
-		<br/>
+{% block body_block %}
 
-		<input type="submit" name="submit"/>
-	</form>
-</body>
-</html>
+<div class="hero-unit">
+	<h1>Login to Rango</h1>
+
+	<div class="container">
+		<form class="form-signin span4" id="login_form" method="post" action="/rango/login/">
+			<h2 class="form-signin-heading">Please sign in</h2>
+			{% csrf_token %}
+			Username : <input class="input-block-level" placeholder="Username" type="text" name="username" value="" size="50"/>
+			<br/>
+			Password : <input class="input-block-level" placeholder="Password" type="password" name="password" value="" size="50"/>
+			<br/>
+
+			<button class="btn btn-primary" type="submit">Sign in</button>
+		</form>
+	</div>
+</div>
+
+
+
+{% endblock %}

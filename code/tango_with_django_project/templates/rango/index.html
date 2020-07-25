@@ -11,22 +11,40 @@
 <h1>Rango says... hello world!</h1>
 {% endif %}
 
-{% if categories %}
-<ul>
-	{% for category in categories %}
-	<li> <a href="/rango/category/{{ category.url }}">{{ category.name }}</a></li>
-	{% endfor %}
-</ul>
+<div class="hero-unit">
+	<h1>Ready to Rango</h1>
+	<p>Find, Add, Share and Rango useful links and resources.</p> 
+</div>
 
-<ul>
-	{% for page in pages %}
-	<li>{{ page.title }}</li>
-	{% endfor %}
-</ul>
+<div class="row-fluid">
+	<div class="span6">
+		<h2>Top 5 Categories</h2>
+		{% if categories %}
+		<ul>
+			{% for category in categories %}
+			<li> <a href="/rango/category/{{ category.url }}">{{ category.name }}</a></li>
+			{% endfor %}
+		</ul>		
+		{% else %}
+		<strong>No categories to display!</strong>
+		{% endif %}
+	</div>	
 
-{% else %}
-<strong>{{ boldmessage }}</strong> <br/>
-{% endif %}
+	<div class="span6">
+		<h2>Top 5 pages</h2>
+
+		{% if pages %}
+		<ul>
+			{% for page in pages %}
+			<li>{{ page.title }}</li>
+			{% endfor %}
+		</ul>
+
+		{% else %}
+		<strong>No pages to display!</strong> <br/>
+		{% endif %}
+	</div>
+</div>
 
 {% endblock %}
 
